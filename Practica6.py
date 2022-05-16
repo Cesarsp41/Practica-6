@@ -39,3 +39,13 @@ while(cam.isOpened()):
     img = cv2.subtract(img,imgAzul)
     img = cv2.subtract(img,imgVerde)
     img = cv2.subtract(img,imgRojo)
+    
+    if ready == True:
+        cv2.imshow('Video',img)
+        cv2.imshow('Mask amarillo',imgAmarillo)
+        cv2.imshow('Mask azul',imgAzul)
+        cv2.imshow('Mask verde',imgVerde)
+        cv2.imshow('Mask rojo',imgRojo)
+        if cv2.waitKey(1) & 0xFF == ord(' '):
+            cv2.destroyAllWindows()
+            break
