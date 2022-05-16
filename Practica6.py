@@ -15,3 +15,17 @@ verdeAlto = np.array([90,255,255],np.uint8)
 
 rojoBajo1 = np.array([0,100,60],np.uint8)
 rojoAlto1 = np.array([3,255,255],np.uint8)
+
+print('Presiona "espacio" para cerrar el video.')
+
+while(cam.isOpened()):
+  ready,imgVolteada = cam.read()
+    img = cv2.flip(imgVolteada,1)
+    hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    
+    maskAmarillo = cv2.inRange(hsv,amarilloBajo,amarilloAlto)
+    maskAzul = cv2.inRange(hsv,azulBajo,azulAlto)
+    maskVerde = cv2.inRange(hsv,verdeBajo,verdeAlto)
+    maskRojo1 = cv2.inRange(hsv,rojoBajo1,rojoAlto1)
+    maskRojo2 = cv2.inRange(hsv,rojoBajo2,rojoAlto2)
+    maskRojo = cv2.add(maskRojo1,maskRojo2)
