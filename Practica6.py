@@ -29,3 +29,13 @@ while(cam.isOpened()):
     maskRojo1 = cv2.inRange(hsv,rojoBajo1,rojoAlto1)
     maskRojo2 = cv2.inRange(hsv,rojoBajo2,rojoAlto2)
     maskRojo = cv2.add(maskRojo1,maskRojo2)
+    
+    imgAmarillo = cv2.bitwise_and(img,img,mask=maskAmarillo)
+    imgAzul = cv2.bitwise_and(img,img,mask=maskAzul)
+    imgVerde = cv2.bitwise_and(img,img,mask=maskVerde)
+    imgRojo = cv2.bitwise_and(img,img,mask=maskRojo)
+
+    img = cv2.subtract(img,imgAmarillo)
+    img = cv2.subtract(img,imgAzul)
+    img = cv2.subtract(img,imgVerde)
+    img = cv2.subtract(img,imgRojo)
